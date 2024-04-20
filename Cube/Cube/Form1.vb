@@ -17,4 +17,25 @@
         g.DrawLine(Pens.Black, 70, 220, 50, 250)
         PictureBox1.Image = canvas
     End Sub
+
+    Private Sub PictureBoxY_Click(sender As Object, e As EventArgs) Handles PictureBoxY.Click
+
+    End Sub
+
+    Private Sub PictureBoxX_Click(sender As Object, e As EventArgs) Handles PictureBoxX.Click
+        PictureBoxX.BackColor = Color.White
+        Dim canvas As New Bitmap(PictureBoxX.Width, PictureBoxX.Height)
+        Dim g As Graphics = Graphics.FromImage(canvas)
+        g.DrawLine(Pens.Black, 20, 20, 20, 120)
+        g.DrawLine(Pens.Black, 20, 120, 120, 120)
+        g.DrawLine(Pens.Black, 120, 120, 120, 20)
+        g.DrawLine(Pens.Black, 120, 20, 20, 20)
+        PictureBoxX.Image = canvas
+        PictureBoxY.Image = canvas
+        PictureBoxZ.Image = canvas
+    End Sub
+
+    Private Sub PictureBoxZ_Click(sender As Object, e As EventArgs) Handles PictureBoxZ.Click
+
+    End Sub
 End Class
