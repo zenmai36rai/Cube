@@ -34,36 +34,36 @@ Partial Class Form1
         '
         'PictureBox1
         '
-        Me.PictureBox1.Location = New System.Drawing.Point(356, 26)
+        Me.PictureBox1.Location = New System.Drawing.Point(256, 12)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(361, 313)
+        Me.PictureBox1.Size = New System.Drawing.Size(207, 207)
         Me.PictureBox1.TabIndex = 0
         Me.PictureBox1.TabStop = False
         '
         'PictureBoxX
         '
         Me.PictureBoxX.BackColor = System.Drawing.SystemColors.Window
-        Me.PictureBoxX.Location = New System.Drawing.Point(12, 191)
+        Me.PictureBoxX.Location = New System.Drawing.Point(12, 235)
         Me.PictureBoxX.Name = "PictureBoxX"
-        Me.PictureBoxX.Size = New System.Drawing.Size(154, 147)
+        Me.PictureBoxX.Size = New System.Drawing.Size(221, 216)
         Me.PictureBoxX.TabIndex = 1
         Me.PictureBoxX.TabStop = False
         '
         'PictureBoxY
         '
         Me.PictureBoxY.BackColor = System.Drawing.SystemColors.Window
-        Me.PictureBoxY.Location = New System.Drawing.Point(183, 191)
+        Me.PictureBoxY.Location = New System.Drawing.Point(256, 235)
         Me.PictureBoxY.Name = "PictureBoxY"
-        Me.PictureBoxY.Size = New System.Drawing.Size(153, 148)
+        Me.PictureBoxY.Size = New System.Drawing.Size(207, 216)
         Me.PictureBoxY.TabIndex = 2
         Me.PictureBoxY.TabStop = False
         '
         'PictureBoxZ
         '
         Me.PictureBoxZ.BackColor = System.Drawing.SystemColors.Window
-        Me.PictureBoxZ.Location = New System.Drawing.Point(12, 25)
+        Me.PictureBoxZ.Location = New System.Drawing.Point(12, 12)
         Me.PictureBoxZ.Name = "PictureBoxZ"
-        Me.PictureBoxZ.Size = New System.Drawing.Size(154, 148)
+        Me.PictureBoxZ.Size = New System.Drawing.Size(221, 207)
         Me.PictureBoxZ.TabIndex = 3
         Me.PictureBoxZ.TabStop = False
         '
@@ -71,7 +71,7 @@ Partial Class Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(737, 356)
+        Me.ClientSize = New System.Drawing.Size(737, 463)
         Me.Controls.Add(Me.PictureBoxZ)
         Me.Controls.Add(Me.PictureBoxY)
         Me.Controls.Add(Me.PictureBoxX)
