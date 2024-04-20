@@ -22,10 +22,10 @@
         Public Points(8) As D3_Point
         Public Lines(12) As Pair
         Sub New()
-            Points(0) = New D3_Point(0, 0, 0)
-            Points(1) = New D3_Point(100, 0, 0)
-            Points(2) = New D3_Point(100, 0, 100)
-            Points(3) = New D3_Point(0, 0, 100)
+            Points(0) = New D3_Point(25, 0, 25)
+            Points(1) = New D3_Point(75, 0, 25)
+            Points(2) = New D3_Point(75, 0, 75)
+            Points(3) = New D3_Point(25, 0, 75)
             Points(4) = New D3_Point(0, 100, 0)
             Points(5) = New D3_Point(100, 100, 0)
             Points(6) = New D3_Point(100, 100, 100)
@@ -70,10 +70,10 @@
         canvas = New Bitmap(PictureBoxY.Width, PictureBoxY.Height)
         g = Graphics.FromImage(canvas)
         For i = 0 To 11 Step 1
-            Dim px1 As Integer = gd.Points(gd.Lines(i).P1).Y + 20
-            Dim py1 As Integer = gd.Points(gd.Lines(i).P1).Z + 20
-            Dim px2 As Integer = gd.Points(gd.Lines(i).P2).Y + 20
-            Dim py2 As Integer = gd.Points(gd.Lines(i).P2).Z + 20
+            Dim px1 As Integer = gd.Points(gd.Lines(i).P1).Z + 20
+            Dim py1 As Integer = gd.Points(gd.Lines(i).P1).Y + 20
+            Dim px2 As Integer = gd.Points(gd.Lines(i).P2).Z + 20
+            Dim py2 As Integer = gd.Points(gd.Lines(i).P2).Y + 20
             g.DrawLine(Pens.Black, px1, py1, px2, py2)
         Next
         PictureBoxY.Image = canvas
@@ -100,4 +100,5 @@
     Private Sub PictureBoxZ_Click(sender As Object, e As EventArgs) Handles PictureBoxZ.Click
 
     End Sub
+
 End Class

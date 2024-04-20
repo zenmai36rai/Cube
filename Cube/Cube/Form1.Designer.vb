@@ -26,6 +26,9 @@ Partial Class Form1
         Me.PictureBoxX = New System.Windows.Forms.PictureBox()
         Me.PictureBoxY = New System.Windows.Forms.PictureBox()
         Me.PictureBoxZ = New System.Windows.Forms.PictureBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBoxX, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBoxY, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -34,7 +37,7 @@ Partial Class Form1
         '
         'PictureBox1
         '
-        Me.PictureBox1.Location = New System.Drawing.Point(256, 12)
+        Me.PictureBox1.Location = New System.Drawing.Point(256, 19)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(207, 207)
         Me.PictureBox1.TabIndex = 0
@@ -43,7 +46,7 @@ Partial Class Form1
         'PictureBoxX
         '
         Me.PictureBoxX.BackColor = System.Drawing.SystemColors.Window
-        Me.PictureBoxX.Location = New System.Drawing.Point(12, 235)
+        Me.PictureBoxX.Location = New System.Drawing.Point(12, 244)
         Me.PictureBoxX.Name = "PictureBoxX"
         Me.PictureBoxX.Size = New System.Drawing.Size(221, 216)
         Me.PictureBoxX.TabIndex = 1
@@ -52,7 +55,7 @@ Partial Class Form1
         'PictureBoxY
         '
         Me.PictureBoxY.BackColor = System.Drawing.SystemColors.Window
-        Me.PictureBoxY.Location = New System.Drawing.Point(256, 235)
+        Me.PictureBoxY.Location = New System.Drawing.Point(256, 244)
         Me.PictureBoxY.Name = "PictureBoxY"
         Me.PictureBoxY.Size = New System.Drawing.Size(207, 216)
         Me.PictureBoxY.TabIndex = 2
@@ -61,17 +64,47 @@ Partial Class Form1
         'PictureBoxZ
         '
         Me.PictureBoxZ.BackColor = System.Drawing.SystemColors.Window
-        Me.PictureBoxZ.Location = New System.Drawing.Point(12, 12)
+        Me.PictureBoxZ.Location = New System.Drawing.Point(12, 19)
         Me.PictureBoxZ.Name = "PictureBoxZ"
         Me.PictureBoxZ.Size = New System.Drawing.Size(221, 207)
         Me.PictureBoxZ.TabIndex = 3
         Me.PictureBoxZ.TabStop = False
         '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(12, 229)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(12, 12)
+        Me.Label1.TabIndex = 4
+        Me.Label1.Text = "X"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(254, 229)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(12, 12)
+        Me.Label2.TabIndex = 5
+        Me.Label2.Text = "Y"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(10, 4)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(12, 12)
+        Me.Label3.TabIndex = 6
+        Me.Label3.Text = "Z"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(737, 463)
+        Me.ClientSize = New System.Drawing.Size(737, 472)
+        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.PictureBoxZ)
         Me.Controls.Add(Me.PictureBoxY)
         Me.Controls.Add(Me.PictureBoxX)
@@ -83,6 +116,7 @@ Partial Class Form1
         CType(Me.PictureBoxY, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBoxZ, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -90,4 +124,7 @@ Partial Class Form1
     Friend WithEvents PictureBoxX As PictureBox
     Friend WithEvents PictureBoxY As PictureBox
     Friend WithEvents PictureBoxZ As PictureBox
+    Friend WithEvents Label1 As Label
+    Friend WithEvents Label2 As Label
+    Friend WithEvents Label3 As Label
 End Class
