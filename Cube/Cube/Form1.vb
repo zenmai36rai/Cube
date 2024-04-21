@@ -1,4 +1,6 @@
 ﻿Public Class Form1
+    Public time As Integer = 0
+
     Class D3_Point
         Public X As Integer
         Public Y As Integer
@@ -43,12 +45,34 @@
             Lines(10) = New Pair(6, 7)
             Lines(11) = New Pair(7, 4)
         End Sub
+        Public Sub Rotate()
+            Dim center_x = 50
+            Dim center_z = 50
+            For i = 0 To 7 Step 1
+                Dim x1 = center_x - Points(i).X
+                Dim z1 = center_z - Points(i).Z
+                Dim d_rad = Form1.time * 3.14 / 360
+                Points(i).X = center_x + x1 * Math.Cos(d_rad) - z1 * Math.Sin(d_rad)
+                Points(i).Z = center_x + x1 * Math.Sin(d_rad) + z1 * Math.Cos(d_rad)
+            Next
+            Form1.time = Form1.time + 1
+            If Form1.time > 18 Then
+                Form1.time = 0
+            End If
+        End Sub
     End Class
+    Dim gd As GraphData
+
     Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
+        Draw()
+    End Sub
+    Private Sub Draw()
+        If time = 0 Then
+            gd = New GraphData()
+        End If
         PictureBox1.BackColor = Color.White
         Dim canvas As New Bitmap(PictureBox1.Width, PictureBox1.Height)
         Dim g As Graphics = Graphics.FromImage(canvas)
-        Dim gd As GraphData = New GraphData()
         For i = 0 To 11 Step 1
             Dim px1 As Integer = gd.Points(gd.Lines(i).P1).X + gd.Points(gd.Lines(i).P1).Z / 2 + 20
             Dim py1 As Integer = gd.Points(gd.Lines(i).P1).Y - gd.Points(gd.Lines(i).P1).Z / 2 + 70
@@ -101,4 +125,12 @@
 
     End Sub
 
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        Draw()
+        gd.Rotate()
+    End Sub
+
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Timer1.Start()
+    End Sub
 End Class
