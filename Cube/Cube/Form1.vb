@@ -24,10 +24,10 @@
         Public Points(8) As D3_Point
         Public Lines(12) As Pair
         Sub New()
-            Points(0) = New D3_Point(25, 0, 25)
-            Points(1) = New D3_Point(75, 0, 25)
-            Points(2) = New D3_Point(75, 0, 75)
-            Points(3) = New D3_Point(25, 0, 75)
+            Points(0) = New D3_Point(0, 0, 0)
+            Points(1) = New D3_Point(100, 0, 0)
+            Points(2) = New D3_Point(100, 0, 100)
+            Points(3) = New D3_Point(0, 0, 100)
             Points(4) = New D3_Point(0, 100, 0)
             Points(5) = New D3_Point(100, 100, 0)
             Points(6) = New D3_Point(100, 100, 100)
@@ -67,6 +67,10 @@
         Draw()
     End Sub
     Private Sub Draw()
+        Const OFFSET_A = 40
+        Const OFFSET_B = 50
+        Const OFFSET_C = 70
+
         If time = 0 Then
             gd = New GraphData()
         End If
@@ -74,40 +78,40 @@
         Dim canvas As New Bitmap(PictureBox1.Width, PictureBox1.Height)
         Dim g As Graphics = Graphics.FromImage(canvas)
         For i = 0 To 11 Step 1
-            Dim px1 As Integer = gd.Points(gd.Lines(i).P1).X + gd.Points(gd.Lines(i).P1).Z / 2 + 20
-            Dim py1 As Integer = gd.Points(gd.Lines(i).P1).Y - gd.Points(gd.Lines(i).P1).Z / 2 + 70
-            Dim px2 As Integer = gd.Points(gd.Lines(i).P2).X + gd.Points(gd.Lines(i).P2).Z / 2 + 20
-            Dim py2 As Integer = gd.Points(gd.Lines(i).P2).Y - gd.Points(gd.Lines(i).P2).Z / 2 + 70
+            Dim px1 As Integer = gd.Points(gd.Lines(i).P1).X + gd.Points(gd.Lines(i).P1).Z / 2 + OFFSET_A
+            Dim py1 As Integer = gd.Points(gd.Lines(i).P1).Y - gd.Points(gd.Lines(i).P1).Z / 2 + OFFSET_C
+            Dim px2 As Integer = gd.Points(gd.Lines(i).P2).X + gd.Points(gd.Lines(i).P2).Z / 2 + OFFSET_A
+            Dim py2 As Integer = gd.Points(gd.Lines(i).P2).Y - gd.Points(gd.Lines(i).P2).Z / 2 + OFFSET_C
             g.DrawLine(Pens.Black, px1, py1, px2, py2)
         Next
         PictureBox1.Image = canvas
         canvas = New Bitmap(PictureBoxX.Width, PictureBoxX.Height)
         g = Graphics.FromImage(canvas)
         For i = 0 To 11 Step 1
-            Dim px1 As Integer = gd.Points(gd.Lines(i).P1).X + 20
-            Dim py1 As Integer = gd.Points(gd.Lines(i).P1).Y + 20
-            Dim px2 As Integer = gd.Points(gd.Lines(i).P2).X + 20
-            Dim py2 As Integer = gd.Points(gd.Lines(i).P2).Y + 20
+            Dim px1 As Integer = gd.Points(gd.Lines(i).P1).X + OFFSET_A
+            Dim py1 As Integer = gd.Points(gd.Lines(i).P1).Y + OFFSET_A
+            Dim px2 As Integer = gd.Points(gd.Lines(i).P2).X + OFFSET_A
+            Dim py2 As Integer = gd.Points(gd.Lines(i).P2).Y + OFFSET_A
             g.DrawLine(Pens.Black, px1, py1, px2, py2)
         Next
         PictureBoxX.Image = canvas
         canvas = New Bitmap(PictureBoxY.Width, PictureBoxY.Height)
         g = Graphics.FromImage(canvas)
         For i = 0 To 11 Step 1
-            Dim px1 As Integer = gd.Points(gd.Lines(i).P1).Z + 20
-            Dim py1 As Integer = gd.Points(gd.Lines(i).P1).Y + 20
-            Dim px2 As Integer = gd.Points(gd.Lines(i).P2).Z + 20
-            Dim py2 As Integer = gd.Points(gd.Lines(i).P2).Y + 20
+            Dim px1 As Integer = gd.Points(gd.Lines(i).P1).Z + OFFSET_A
+            Dim py1 As Integer = gd.Points(gd.Lines(i).P1).Y + OFFSET_A
+            Dim px2 As Integer = gd.Points(gd.Lines(i).P2).Z + OFFSET_A
+            Dim py2 As Integer = gd.Points(gd.Lines(i).P2).Y + OFFSET_A
             g.DrawLine(Pens.Black, px1, py1, px2, py2)
         Next
         PictureBoxY.Image = canvas
         canvas = New Bitmap(PictureBoxZ.Width, PictureBoxZ.Height)
         g = Graphics.FromImage(canvas)
         For i = 0 To 11 Step 1
-            Dim px1 As Integer = gd.Points(gd.Lines(i).P1).X + 20
-            Dim py1 As Integer = gd.Points(gd.Lines(i).P1).Z + 20
-            Dim px2 As Integer = gd.Points(gd.Lines(i).P2).X + 20
-            Dim py2 As Integer = gd.Points(gd.Lines(i).P2).Z + 20
+            Dim px1 As Integer = gd.Points(gd.Lines(i).P1).X + OFFSET_A
+            Dim py1 As Integer = gd.Points(gd.Lines(i).P1).Z + OFFSET_A
+            Dim px2 As Integer = gd.Points(gd.Lines(i).P2).X + OFFSET_A
+            Dim py2 As Integer = gd.Points(gd.Lines(i).P2).Z + OFFSET_A
             g.DrawLine(Pens.Black, px1, py1, px2, py2)
         Next
         PictureBoxZ.Image = canvas
