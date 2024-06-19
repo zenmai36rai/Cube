@@ -1,10 +1,10 @@
 ﻿Public Class Form1
-    Public time As Integer = 0
+    Public time As Double = 0
 
     Class D3_Point
-        Public X As Integer
-        Public Y As Integer
-        Public Z As Integer
+        Public X As Double
+        Public Y As Double
+        Public Z As Double
         Sub New(ByVal _x, ByVal _y, ByVal _z)
             X = _x
             Y = _y
@@ -51,12 +51,12 @@
             For i = 0 To 7 Step 1
                 Dim x1 = center_x - Points(i).X
                 Dim z1 = center_z - Points(i).Z
-                Dim d_rad = Form1.time * 3.14 / 360
+                Dim d_rad = Form1.time * 3.14 / 180
                 Points(i).X = center_x + x1 * Math.Cos(d_rad) - z1 * Math.Sin(d_rad)
                 Points(i).Z = center_x + x1 * Math.Sin(d_rad) + z1 * Math.Cos(d_rad)
             Next
             Form1.time = Form1.time + 1
-            If Form1.time > 18 Then
+            If Form1.time > 359 Then
                 Form1.time = 0
             End If
         End Sub
@@ -109,9 +109,9 @@
         g = Graphics.FromImage(canvas)
         For i = 0 To 11 Step 1
             Dim px1 As Integer = gd.Points(gd.Lines(i).P1).X + OFFSET_A
-            Dim py1 As Integer = gd.Points(gd.Lines(i).P1).Z + OFFSET_A
+            Dim py1 As Integer = -1 * gd.Points(gd.Lines(i).P1).Z + 4 * OFFSET_A
             Dim px2 As Integer = gd.Points(gd.Lines(i).P2).X + OFFSET_A
-            Dim py2 As Integer = gd.Points(gd.Lines(i).P2).Z + OFFSET_A
+            Dim py2 As Integer = -1 * gd.Points(gd.Lines(i).P2).Z + 4 * OFFSET_A
             g.DrawLine(Pens.Black, px1, py1, px2, py2)
         Next
         PictureBoxZ.Image = canvas
