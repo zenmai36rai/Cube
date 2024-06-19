@@ -10,3 +10,15 @@ C:\Users\宮澤 郷介\source\repos\Cube\Cube\bin\Debug\Cube.xml
 C:\Users\宮澤 郷介\source\repos\Cube\Cube\obj\Debug\Cube.exe
 C:\Users\宮澤 郷介\source\repos\Cube\Cube\obj\Debug\Cube.xml
 C:\Users\宮澤 郷介\source\repos\Cube\Cube\obj\Debug\Cube.pdb
+C:\Users\宮澤 郷介\Source\Repos\zenmai36rai\Cube\Cube\Cube\obj\Debug\Cube.vbprojAssemblyReference.cache
+C:\Users\宮澤 郷介\Source\Repos\zenmai36rai\Cube\Cube\Cube\obj\Debug\Cube.Form1.resources
+C:\Users\宮澤 郷介\Source\Repos\zenmai36rai\Cube\Cube\Cube\obj\Debug\Cube.Resources.resources
+C:\Users\宮澤 郷介\Source\Repos\zenmai36rai\Cube\Cube\Cube\obj\Debug\Cube.vbproj.GenerateResource.cache
+C:\Users\宮澤 郷介\Source\Repos\zenmai36rai\Cube\Cube\Cube\obj\Debug\Cube.vbproj.CoreCompileInputs.cache
+C:\Users\宮澤 郷介\Source\Repos\zenmai36rai\Cube\Cube\Cube\obj\Debug\Cube.exe
+C:\Users\宮澤 郷介\Source\Repos\zenmai36rai\Cube\Cube\Cube\obj\Debug\Cube.xml
+C:\Users\宮澤 郷介\Source\Repos\zenmai36rai\Cube\Cube\Cube\obj\Debug\Cube.pdb
+C:\Users\宮澤 郷介\Source\Repos\zenmai36rai\Cube\Cube\Cube\bin\Debug\Cube.exe.config
+C:\Users\宮澤 郷介\Source\Repos\zenmai36rai\Cube\Cube\Cube\bin\Debug\Cube.exe
+C:\Users\宮澤 郷介\Source\Repos\zenmai36rai\Cube\Cube\Cube\bin\Debug\Cube.pdb
+C:\Users\宮澤 郷介\Source\Repos\zenmai36rai\Cube\Cube\Cube\bin\Debug\Cube.xml

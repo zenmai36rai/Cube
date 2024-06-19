@@ -51,7 +51,8 @@
             For i = 0 To 7 Step 1
                 Dim x1 = center_x - Points(i).X
                 Dim z1 = center_z - Points(i).Z
-                Dim d_rad = Form1.time * 3.14 / 180
+                Static pi = 3.14 / 180
+                Dim d_rad = Form1.time * pi
                 Points(i).X = center_x + x1 * Math.Cos(d_rad) - z1 * Math.Sin(d_rad)
                 Points(i).Z = center_x + x1 * Math.Sin(d_rad) + z1 * Math.Cos(d_rad)
             Next
