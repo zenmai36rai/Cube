@@ -101,6 +101,7 @@ Partial Class Form1
         '
         'Timer1
         '
+        Me.Timer1.Interval = 17
         '
         'Form1
         '

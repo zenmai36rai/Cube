@@ -46,20 +46,17 @@
             Lines(11) = New Pair(7, 4)
         End Sub
         Public Sub Rotate()
+            Static pi As Double = 3.141592 / 180
             Dim center_x As Double = 50
             Dim center_z As Double = 50
             For i = 0 To 7 Step 1
                 Dim x1 As Double = center_x - Points(i).X
                 Dim z1 As Double = center_z - Points(i).Z
-                Static pi As double = 3.14 / 180
-                Dim d_rad As Double = Form1.time * pi
+                Dim d_rad As Double = pi
                 Points(i).X = center_x + x1 * Math.Cos(d_rad) - z1 * Math.Sin(d_rad)
                 Points(i).Z = center_x + x1 * Math.Sin(d_rad) + z1 * Math.Cos(d_rad)
             Next
             Form1.time = Form1.time + 1
-            If Form1.time > 359 Then
-                Form1.time = 0
-            End If
         End Sub
     End Class
     Dim gd As GraphData
