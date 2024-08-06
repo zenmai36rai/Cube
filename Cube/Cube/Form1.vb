@@ -20,9 +20,21 @@
             P2 = _p2
         End Sub
     End Class
+    Class Triangle
+        Public P1 As Integer
+        Public P2 As Integer
+        Public P3 As Integer
+        Sub New(ByVal _p1, ByVal _p2, ByVal _p3)
+            P1 = _p1
+            P2 = _p2
+            P3 = _p3
+        End Sub
+    End Class
+
     Class GraphData
         Public Points(8) As D3_Point
         Public Lines(12) As Pair
+        Public Triangles(12) As Triangle
         Sub New()
             Points(0) = New D3_Point(0, 0, 0)
             Points(1) = New D3_Point(100, 0, 0)
@@ -44,7 +56,10 @@
             Lines(9) = New Pair(5, 6)
             Lines(10) = New Pair(6, 7)
             Lines(11) = New Pair(7, 4)
+            Triangles(0) = New Triangle(0, 1, 2)
+            Triangles(1) = New Triangle(2, 3, 0)
         End Sub
+
         Public Sub Rotate()
             Static pi As Double = 3.141592 / 180
             Dim center_x As Double = 50
@@ -82,6 +97,17 @@
             Dim py2 As Integer = gd.Points(gd.Lines(i).P2).Y - gd.Points(gd.Lines(i).P2).Z / 2 + OFFSET_C
             g.DrawLine(Pens.Black, px1, py1, px2, py2)
         Next
+        For i = 0 To 1 Step 1
+            Dim p(2) As Point
+            p(0).X = gd.Points(gd.Triangles(i).P1).X + gd.Points(gd.Triangles(i).P1).Z / 2 + OFFSET_A
+            p(0).Y = gd.Points(gd.Triangles(i).P1).Y - gd.Points(gd.Triangles(i).P1).Z / 2 + OFFSET_C
+            p(1).X = gd.Points(gd.Triangles(i).P2).X + gd.Points(gd.Triangles(i).P2).Z / 2 + OFFSET_A
+            p(1).Y = gd.Points(gd.Triangles(i).P2).Y - gd.Points(gd.Triangles(i).P2).Z / 2 + OFFSET_C
+            p(2).X = gd.Points(gd.Triangles(i).P3).X + gd.Points(gd.Triangles(i).P3).Z / 2 + OFFSET_A
+            p(2).Y = gd.Points(gd.Triangles(i).P3).Y - gd.Points(gd.Triangles(i).P3).Z / 2 + OFFSET_C
+            g.FillPolygon(Brushes.Gray, p)
+        Next
+
         PictureBox1.Image = canvas
         canvas = New Bitmap(PictureBoxX.Width, PictureBoxX.Height)
         g = Graphics.FromImage(canvas)
