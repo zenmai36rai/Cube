@@ -157,7 +157,7 @@
         End If
         If DRAW_POLYGON Then
             gd.ZSort()
-            Dim colors() As Brush = {Brushes.LightSkyBlue, Brushes.LightGreen, Brushes.LightGreen, Brushes.LightPink, Brushes.LightPink, Brushes.LightGray, Brushes.LightGray}
+            Dim colors() As Brush = {Brushes.LightSkyBlue, Brushes.Yellow, Brushes.Yellow, Brushes.Gray, Brushes.Gray, Brushes.Gray, Brushes.Gray}
             Dim mk As Integer = gd.TryZSort.Count() - 1
             For k = 0 To mk Step 1
                 Dim i = gd.TryZSort(k)
