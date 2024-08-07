@@ -62,12 +62,12 @@
             Triangles(3) = New Triangle(1, 4, 5)
             Triangles(4) = New Triangle(2, 3, 6)
             Triangles(5) = New Triangle(3, 6, 7)
-            'Triangles(6) = New Triangle(1, 2, 6)
-            'Triangles(7) = New Triangle(2, 6, 1)
-            'Triangles(8) = New Triangle(3, 0, 4)
-            'Triangles(9) = New Triangle(4, 6, 7)
-            Triangles(6) = New Triangle(4, 5, 6)
-            Triangles(7) = New Triangle(6, 7, 4)
+            Triangles(6) = New Triangle(1, 2, 5)
+            Triangles(7) = New Triangle(5, 6, 2)
+            Triangles(8) = New Triangle(3, 0, 4)
+            Triangles(9) = New Triangle(4, 7, 3)
+            Triangles(10) = New Triangle(4, 5, 6)
+            Triangles(11) = New Triangle(6, 7, 4)
         End Sub
 
         Public Sub Rotate()
@@ -78,8 +78,8 @@
                 Dim x1 As Double = center_x - Points(i).X
                 Dim z1 As Double = center_z - Points(i).Z
                 Dim d_rad As Double = pi
-                Points(i).X = center_x + x1 * Math.Cos(d_rad) - z1 * Math.Sin(d_rad)
-                Points(i).Z = center_x + x1 * Math.Sin(d_rad) + z1 * Math.Cos(d_rad)
+                Points(i).X = center_x - x1 * Math.Cos(d_rad) + z1 * Math.Sin(d_rad)
+                Points(i).Z = center_x - x1 * Math.Sin(d_rad) - z1 * Math.Cos(d_rad)
             Next
             Form1.time = Form1.time + 1
         End Sub
@@ -100,27 +100,44 @@
         PictureBox1.BackColor = Color.White
         Dim canvas As New Bitmap(PictureBox1.Width, PictureBox1.Height)
         Dim g As Graphics = Graphics.FromImage(canvas)
-        For i = 0 To 11 Step 1
-            Dim px1 As Integer = gd.Points(gd.Lines(i).P1).X + gd.Points(gd.Lines(i).P1).Z / 2 + OFFSET_A
-            Dim py1 As Integer = gd.Points(gd.Lines(i).P1).Y - gd.Points(gd.Lines(i).P1).Z / 2 + OFFSET_C
-            Dim px2 As Integer = gd.Points(gd.Lines(i).P2).X + gd.Points(gd.Lines(i).P2).Z / 2 + OFFSET_A
-            Dim py2 As Integer = gd.Points(gd.Lines(i).P2).Y - gd.Points(gd.Lines(i).P2).Z / 2 + OFFSET_C
-            g.DrawLine(Pens.Black, px1, py1, px2, py2)
-        Next
-        Dim colors() As Brush = {Brushes.LightSkyBlue, Brushes.LightGreen, Brushes.LightGreen, Brushes.LightPink, Brushes.LightPink, Brushes.LightGray, Brushes.LightGray}
-        For i = 7 To 0 Step -1
-            Dim p(2) As Point
-            p(0).X = gd.Points(gd.Triangles(i).P1).X + gd.Points(gd.Triangles(i).P1).Z / 2 + OFFSET_A
-            p(0).Y = gd.Points(gd.Triangles(i).P1).Y - gd.Points(gd.Triangles(i).P1).Z / 2 + OFFSET_C
-            p(1).X = gd.Points(gd.Triangles(i).P2).X + gd.Points(gd.Triangles(i).P2).Z / 2 + OFFSET_A
-            p(1).Y = gd.Points(gd.Triangles(i).P2).Y - gd.Points(gd.Triangles(i).P2).Z / 2 + OFFSET_C
-            p(2).X = gd.Points(gd.Triangles(i).P3).X + gd.Points(gd.Triangles(i).P3).Z / 2 + OFFSET_A
-            p(2).Y = gd.Points(gd.Triangles(i).P3).Y - gd.Points(gd.Triangles(i).P3).Z / 2 + OFFSET_C
-            Dim panel_color = colors(i / 2)
-            g.FillPolygon(panel_color, p)
-        Next
-
+        Const DRAW_POINT = False
+        Const DRAW_LINE = False
+        Const DRAW_POLYGON = True
+        If DRAW_POINT Then
+            Dim PenColor() As Color = {Color.Black, Color.Red, Color.Blue, Color.Pink}
+            For i = 0 To 7 Step 1
+                Dim px1 As Integer = gd.Points(i).X + gd.Points(i).Z / 2 + OFFSET_A
+                Dim py1 As Integer = gd.Points(i).Y - gd.Points(i).Z / 2 + OFFSET_C
+                Dim r As Rectangle = New Rectangle(px1, py1, 3, 3)
+                g.DrawEllipse(Pens.Black, r)
+            Next
+        End If
+        If DRAW_LINE Then
+            Dim PenColor() As Pen = {Pens.Black, Pens.Red, Pens.Blue, Pens.Pink}
+            For i = 0 To 11 Step 1
+                Dim px1 As Integer = gd.Points(gd.Lines(i).P1).X + gd.Points(gd.Lines(i).P1).Z / 2 + OFFSET_A
+                Dim py1 As Integer = gd.Points(gd.Lines(i).P1).Y - gd.Points(gd.Lines(i).P1).Z / 2 + OFFSET_C
+                Dim px2 As Integer = gd.Points(gd.Lines(i).P2).X + gd.Points(gd.Lines(i).P2).Z / 2 + OFFSET_A
+                Dim py2 As Integer = gd.Points(gd.Lines(i).P2).Y - gd.Points(gd.Lines(i).P2).Z / 2 + OFFSET_C
+                g.DrawLine(PenColor(0), px1, py1, px2, py2)
+            Next
+        End If
+        If DRAW_POLYGON Then
+            Dim colors() As Brush = {Brushes.LightSkyBlue, Brushes.LightGreen, Brushes.LightGreen, Brushes.LightPink, Brushes.LightPink, Brushes.LightGray, Brushes.LightGray}
+            For i = 11 To 0 Step -1
+                Dim p(2) As Point
+                p(0).X = gd.Points(gd.Triangles(i).P1).X + gd.Points(gd.Triangles(i).P1).Z / 2 + OFFSET_A
+                p(0).Y = gd.Points(gd.Triangles(i).P1).Y - gd.Points(gd.Triangles(i).P1).Z / 2 + OFFSET_C
+                p(1).X = gd.Points(gd.Triangles(i).P2).X + gd.Points(gd.Triangles(i).P2).Z / 2 + OFFSET_A
+                p(1).Y = gd.Points(gd.Triangles(i).P2).Y - gd.Points(gd.Triangles(i).P2).Z / 2 + OFFSET_C
+                p(2).X = gd.Points(gd.Triangles(i).P3).X + gd.Points(gd.Triangles(i).P3).Z / 2 + OFFSET_A
+                p(2).Y = gd.Points(gd.Triangles(i).P3).Y - gd.Points(gd.Triangles(i).P3).Z / 2 + OFFSET_C
+                Dim panel_color = colors(i / 2)
+                g.FillPolygon(panel_color, p)
+            Next
+        End If
         PictureBox1.Image = canvas
+
         canvas = New Bitmap(PictureBoxX.Width, PictureBoxX.Height)
         g = Graphics.FromImage(canvas)
         For i = 0 To 11 Step 1
