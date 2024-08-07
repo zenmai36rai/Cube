@@ -58,6 +58,16 @@
             Lines(11) = New Pair(7, 4)
             Triangles(0) = New Triangle(0, 1, 2)
             Triangles(1) = New Triangle(2, 3, 0)
+            Triangles(2) = New Triangle(0, 1, 4)
+            Triangles(3) = New Triangle(1, 4, 5)
+            Triangles(4) = New Triangle(2, 3, 6)
+            Triangles(5) = New Triangle(3, 6, 7)
+            'Triangles(6) = New Triangle(1, 2, 6)
+            'Triangles(7) = New Triangle(2, 6, 1)
+            'Triangles(8) = New Triangle(3, 0, 4)
+            'Triangles(9) = New Triangle(4, 6, 7)
+            Triangles(6) = New Triangle(4, 5, 6)
+            Triangles(7) = New Triangle(6, 7, 4)
         End Sub
 
         Public Sub Rotate()
@@ -97,7 +107,8 @@
             Dim py2 As Integer = gd.Points(gd.Lines(i).P2).Y - gd.Points(gd.Lines(i).P2).Z / 2 + OFFSET_C
             g.DrawLine(Pens.Black, px1, py1, px2, py2)
         Next
-        For i = 0 To 1 Step 1
+        Dim colors() As Brush = {Brushes.LightGray, Brushes.LightSkyBlue, Brushes.LightGreen, Brushes.LightPink, Brushes.AntiqueWhite, Brushes.LightGray, Brushes.LightGray}
+        For i = 0 To 7 Step 1
             Dim p(2) As Point
             p(0).X = gd.Points(gd.Triangles(i).P1).X + gd.Points(gd.Triangles(i).P1).Z / 2 + OFFSET_A
             p(0).Y = gd.Points(gd.Triangles(i).P1).Y - gd.Points(gd.Triangles(i).P1).Z / 2 + OFFSET_C
@@ -105,7 +116,8 @@
             p(1).Y = gd.Points(gd.Triangles(i).P2).Y - gd.Points(gd.Triangles(i).P2).Z / 2 + OFFSET_C
             p(2).X = gd.Points(gd.Triangles(i).P3).X + gd.Points(gd.Triangles(i).P3).Z / 2 + OFFSET_A
             p(2).Y = gd.Points(gd.Triangles(i).P3).Y - gd.Points(gd.Triangles(i).P3).Z / 2 + OFFSET_C
-            g.FillPolygon(Brushes.Gray, p)
+            Dim panel_color = colors(i / 2)
+            g.FillPolygon(panel_color, p)
         Next
 
         PictureBox1.Image = canvas
