@@ -108,7 +108,7 @@
             For i = 0 To 7 Step 1
                 Dim px1 As Integer = gd.Points(i).X + gd.Points(i).Z / 2 + OFFSET_A
                 Dim py1 As Integer = gd.Points(i).Y - gd.Points(i).Z / 2 + OFFSET_C
-                Dim r As Rectangle = New Rectangle(px1, py1, 3, 3)
+                Dim r As Rectangle = New Rectangle(px1 - 1, py1 - 1, 2, 2)
                 g.DrawEllipse(Pens.Black, r)
             Next
         End If
