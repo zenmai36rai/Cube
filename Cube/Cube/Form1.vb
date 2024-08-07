@@ -107,8 +107,8 @@
             Dim py2 As Integer = gd.Points(gd.Lines(i).P2).Y - gd.Points(gd.Lines(i).P2).Z / 2 + OFFSET_C
             g.DrawLine(Pens.Black, px1, py1, px2, py2)
         Next
-        Dim colors() As Brush = {Brushes.LightGray, Brushes.LightSkyBlue, Brushes.LightGreen, Brushes.LightPink, Brushes.AntiqueWhite, Brushes.LightGray, Brushes.LightGray}
-        For i = 0 To 7 Step 1
+        Dim colors() As Brush = {Brushes.LightSkyBlue, Brushes.LightGreen, Brushes.LightGreen, Brushes.LightPink, Brushes.LightPink, Brushes.LightGray, Brushes.LightGray}
+        For i = 7 To 0 Step -1
             Dim p(2) As Point
             p(0).X = gd.Points(gd.Triangles(i).P1).X + gd.Points(gd.Triangles(i).P1).Z / 2 + OFFSET_A
             p(0).Y = gd.Points(gd.Triangles(i).P1).Y - gd.Points(gd.Triangles(i).P1).Z / 2 + OFFSET_C
