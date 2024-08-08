@@ -36,7 +36,7 @@
         Public Lines(12) As Pair
         Public Triangles(12) As Triangle
         Public ZList As List(Of Double)
-        Public TryZSort As List(Of Integer)
+        Public DepthOrder As List(Of Integer)
         Sub New()
             Points(0) = New D3_Point(0, 0, 0)
             Points(1) = New D3_Point(100, 0, 0)
@@ -71,7 +71,7 @@
             Triangles(10) = New Triangle(4, 5, 6)
             Triangles(11) = New Triangle(6, 7, 4)
             ZList = New List(Of Double)
-            TryZSort = New List(Of Integer)
+            DepthOrder = New List(Of Integer)
         End Sub
 
         Public Sub Rotate()
@@ -94,27 +94,27 @@
             Next
             ZList.Sort()
             Dim idx = ZList.Count() - 1
-            TryZSort.Clear()
+            DepthOrder.Clear()
             For k = idx To 0 Step -1
                 For i = 11 To 0 Step -1
-                    If ZList(k) = GetMinZ(Triangles(i)) Then
-                        TryZSort.Add(i)
+                    If ZList(k) = GetMaxZ(Triangles(i)) Then
+                        DepthOrder.Add(i)
                     End If
                 Next
             Next
         End Sub
-        Public Function GetMinZ(ByVal t As Triangle) As Double
-            Dim MinZ As Double = 1000
-            If Points(t.P1).Z < MinZ Then
-                MinZ = Points(t.P1).Z
+        Public Function GetMaxZ(ByVal t As Triangle) As Double
+            Dim MaxZ As Double = -1000
+            If Points(t.P1).Z > MaxZ Then
+                MaxZ = Points(t.P1).Z
             End If
-            If Points(t.P2).Z < MinZ Then
-                MinZ = Points(t.P2).Z
+            If Points(t.P2).Z > MaxZ Then
+                MaxZ = Points(t.P2).Z
             End If
-            If Points(t.P3).Z < MinZ Then
-                MinZ = Points(t.P3).Z
+            If Points(t.P3).Z > MaxZ Then
+                MaxZ = Points(t.P3).Z
             End If
-            Return MinZ
+            Return MaxZ
         End Function
     End Class
     Dim gd As GraphData
@@ -158,9 +158,9 @@
         If DRAW_POLYGON Then
             gd.ZSort()
             Dim colors() As Brush = {Brushes.LightSkyBlue, Brushes.Yellow, Brushes.Yellow, Brushes.Gray, Brushes.Gray, Brushes.Gray, Brushes.Gray}
-            Dim mk As Integer = gd.TryZSort.Count() - 1
+            Dim mk As Integer = gd.DepthOrder.Count() - 1
             For k = 0 To mk Step 1
-                Dim i = gd.TryZSort(k)
+                Dim i = gd.DepthOrder(k)
                 Dim p(2) As Point
                 p(0).X = gd.Points(gd.Triangles(i).P1).X + gd.Points(gd.Triangles(i).P1).Z / 2 + OFFSET_A
                 p(0).Y = gd.Points(gd.Triangles(i).P1).Y - gd.Points(gd.Triangles(i).P1).Z / 2 + OFFSET_C
