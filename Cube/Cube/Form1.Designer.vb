@@ -40,12 +40,12 @@ Partial Class Form1
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.TextBox3 = New System.Windows.Forms.TextBox()
-        Me.TextBox4 = New System.Windows.Forms.TextBox()
-        Me.TextBox5 = New System.Windows.Forms.TextBox()
         Me.TextBox6 = New System.Windows.Forms.TextBox()
-        Me.TextBox7 = New System.Windows.Forms.TextBox()
-        Me.TextBox8 = New System.Windows.Forms.TextBox()
+        Me.TextBox5 = New System.Windows.Forms.TextBox()
+        Me.TextBox4 = New System.Windows.Forms.TextBox()
         Me.TextBox9 = New System.Windows.Forms.TextBox()
+        Me.TextBox8 = New System.Windows.Forms.TextBox()
+        Me.TextBox7 = New System.Windows.Forms.TextBox()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBoxX, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBoxY, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -198,13 +198,13 @@ Partial Class Form1
         Me.TextBox3.Size = New System.Drawing.Size(52, 19)
         Me.TextBox3.TabIndex = 15
         '
-        'TextBox4
+        'TextBox6
         '
-        Me.TextBox4.Enabled = False
-        Me.TextBox4.Location = New System.Drawing.Point(594, 88)
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(52, 19)
-        Me.TextBox4.TabIndex = 18
+        Me.TextBox6.Enabled = False
+        Me.TextBox6.Location = New System.Drawing.Point(594, 88)
+        Me.TextBox6.Name = "TextBox6"
+        Me.TextBox6.Size = New System.Drawing.Size(52, 19)
+        Me.TextBox6.TabIndex = 18
         '
         'TextBox5
         '
@@ -213,19 +213,19 @@ Partial Class Form1
         Me.TextBox5.Size = New System.Drawing.Size(52, 19)
         Me.TextBox5.TabIndex = 17
         '
-        'TextBox6
+        'TextBox4
         '
-        Me.TextBox6.Location = New System.Drawing.Point(478, 88)
-        Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.Size = New System.Drawing.Size(52, 19)
-        Me.TextBox6.TabIndex = 16
+        Me.TextBox4.Location = New System.Drawing.Point(478, 88)
+        Me.TextBox4.Name = "TextBox4"
+        Me.TextBox4.Size = New System.Drawing.Size(52, 19)
+        Me.TextBox4.TabIndex = 16
         '
-        'TextBox7
+        'TextBox9
         '
-        Me.TextBox7.Location = New System.Drawing.Point(594, 123)
-        Me.TextBox7.Name = "TextBox7"
-        Me.TextBox7.Size = New System.Drawing.Size(52, 19)
-        Me.TextBox7.TabIndex = 21
+        Me.TextBox9.Location = New System.Drawing.Point(594, 123)
+        Me.TextBox9.Name = "TextBox9"
+        Me.TextBox9.Size = New System.Drawing.Size(52, 19)
+        Me.TextBox9.TabIndex = 21
         '
         'TextBox8
         '
@@ -234,24 +234,24 @@ Partial Class Form1
         Me.TextBox8.Size = New System.Drawing.Size(52, 19)
         Me.TextBox8.TabIndex = 20
         '
-        'TextBox9
+        'TextBox7
         '
-        Me.TextBox9.Location = New System.Drawing.Point(478, 123)
-        Me.TextBox9.Name = "TextBox9"
-        Me.TextBox9.Size = New System.Drawing.Size(52, 19)
-        Me.TextBox9.TabIndex = 19
+        Me.TextBox7.Location = New System.Drawing.Point(478, 123)
+        Me.TextBox7.Name = "TextBox7"
+        Me.TextBox7.Size = New System.Drawing.Size(52, 19)
+        Me.TextBox7.TabIndex = 19
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(737, 472)
-        Me.Controls.Add(Me.TextBox7)
-        Me.Controls.Add(Me.TextBox8)
         Me.Controls.Add(Me.TextBox9)
-        Me.Controls.Add(Me.TextBox4)
-        Me.Controls.Add(Me.TextBox5)
+        Me.Controls.Add(Me.TextBox8)
+        Me.Controls.Add(Me.TextBox7)
         Me.Controls.Add(Me.TextBox6)
+        Me.Controls.Add(Me.TextBox5)
+        Me.Controls.Add(Me.TextBox4)
         Me.Controls.Add(Me.TextBox3)
         Me.Controls.Add(Me.TextBox2)
         Me.Controls.Add(Me.TextBox1)
@@ -296,10 +296,10 @@ Partial Class Form1
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents TextBox2 As TextBox
     Friend WithEvents TextBox3 As TextBox
-    Friend WithEvents TextBox4 As TextBox
-    Friend WithEvents TextBox5 As TextBox
     Friend WithEvents TextBox6 As TextBox
-    Friend WithEvents TextBox7 As TextBox
-    Friend WithEvents TextBox8 As TextBox
+    Friend WithEvents TextBox5 As TextBox
+    Friend WithEvents TextBox4 As TextBox
     Friend WithEvents TextBox9 As TextBox
+    Friend WithEvents TextBox8 As TextBox
+    Friend WithEvents TextBox7 As TextBox
 End Class

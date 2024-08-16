@@ -36,8 +36,8 @@
 
     Class GraphData
         Public Points As List(Of D3_Point)
-        Public Lines(12) As Pair
-        Public Triangles(12) As Triangle
+        Public Lines As List(Of Pair)
+        Public Triangles As List(Of Triangle)
         Public ZList As List(Of Double)
         Public DepthOrder As List(Of Integer)
         Sub New()
@@ -50,30 +50,32 @@
             Points.Add(New D3_Point(100, 100, 0))
             Points.Add(New D3_Point(100, 100, 100))
             Points.Add(New D3_Point(0, 100, 100))
-            Lines(0) = New Pair(0, 1)
-            Lines(1) = New Pair(1, 2)
-            Lines(2) = New Pair(2, 3)
-            Lines(3) = New Pair(3, 0)
-            Lines(4) = New Pair(0, 4)
-            Lines(5) = New Pair(1, 5)
-            Lines(6) = New Pair(2, 6)
-            Lines(7) = New Pair(3, 7)
-            Lines(8) = New Pair(4, 5)
-            Lines(9) = New Pair(5, 6)
-            Lines(10) = New Pair(6, 7)
-            Lines(11) = New Pair(7, 4)
-            Triangles(0) = New Triangle(0, 1, 2)
-            Triangles(1) = New Triangle(2, 3, 0)
-            Triangles(2) = New Triangle(0, 1, 4)
-            Triangles(3) = New Triangle(1, 4, 5)
-            Triangles(4) = New Triangle(2, 3, 6)
-            Triangles(5) = New Triangle(3, 6, 7)
-            Triangles(6) = New Triangle(1, 2, 5)
-            Triangles(7) = New Triangle(5, 6, 2)
-            Triangles(8) = New Triangle(3, 0, 4)
-            Triangles(9) = New Triangle(4, 7, 3)
-            Triangles(10) = New Triangle(4, 5, 6)
-            Triangles(11) = New Triangle(6, 7, 4)
+            Lines = New List(Of Pair)
+            Lines.Add(New Pair(0, 1))
+            Lines.Add(New Pair(1, 2))
+            Lines.Add(New Pair(2, 3))
+            Lines.Add(New Pair(3, 0))
+            Lines.Add(New Pair(0, 4))
+            Lines.Add(New Pair(1, 5))
+            Lines.Add(New Pair(2, 6))
+            Lines.Add(New Pair(3, 7))
+            Lines.Add(New Pair(4, 5))
+            Lines.Add(New Pair(5, 6))
+            Lines.Add(New Pair(6, 7))
+            Lines.Add(New Pair(7, 4))
+            Triangles = New List(Of Triangle)
+            Triangles.Add(New Triangle(0, 1, 2))
+            Triangles.Add(New Triangle(2, 3, 0))
+            Triangles.Add(New Triangle(0, 1, 4))
+            Triangles.Add(New Triangle(1, 4, 5))
+            Triangles.Add(New Triangle(2, 3, 6))
+            Triangles.Add(New Triangle(3, 6, 7))
+            Triangles.Add(New Triangle(1, 2, 5))
+            Triangles.Add(New Triangle(5, 6, 2))
+            Triangles.Add(New Triangle(3, 0, 4))
+            Triangles.Add(New Triangle(4, 7, 3))
+            Triangles.Add(New Triangle(4, 5, 6))
+            Triangles.Add(New Triangle(6, 7, 4))
             ZList = New List(Of Double)
             DepthOrder = New List(Of Integer)
         End Sub
@@ -93,14 +95,14 @@
         End Sub
         Public Sub ZSort()
             ZList.Clear()
-            For i = 0 To 7 Step 1
+            For i = 0 To Points.Count - 1 Step 1
                 ZList.Add(Points(i).Z)
             Next
             ZList.Sort()
             Dim idx = ZList.Count() - 1
             DepthOrder.Clear()
             For k = idx To 0 Step -1
-                For i = 11 To 0 Step -1
+                For i = Triangles.Count - 1 To 0 Step -1
                     If ZList(k) = GetMaxZ(Triangles(i)) Then
                         DepthOrder.Add(i)
                     End If
@@ -148,7 +150,7 @@
         End If
         If DRAW_LINE Then
             Dim PenColor() As Pen = {Pens.Black, Pens.Red, Pens.Blue, Pens.Pink}
-            For i = 0 To 11 Step 1
+            For i = 0 To gd.Lines.Count - 1 Step 1
                 Dim px1 As Integer = gd.Points(gd.Lines(i).P1).X + gd.Points(gd.Lines(i).P1).Z / 2 + OFFSET_A
                 Dim py1 As Integer = gd.Points(gd.Lines(i).P1).Y - gd.Points(gd.Lines(i).P1).Z / 2 + OFFSET_C
                 Dim px2 As Integer = gd.Points(gd.Lines(i).P2).X + gd.Points(gd.Lines(i).P2).Z / 2 + OFFSET_A
@@ -177,7 +179,7 @@
 
         canvas = New Bitmap(PictureBoxX.Width, PictureBoxX.Height)
         g = Graphics.FromImage(canvas)
-        For i = 0 To 11 Step 1
+        For i = 0 To gd.Lines.Count - 1 Step 1
             Dim px1 As Integer = gd.Points(gd.Lines(i).P1).X + OFFSET_A
             Dim py1 As Integer = gd.Points(gd.Lines(i).P1).Y + OFFSET_A
             Dim px2 As Integer = gd.Points(gd.Lines(i).P2).X + OFFSET_A
@@ -187,7 +189,7 @@
         PictureBoxX.Image = canvas
         canvas = New Bitmap(PictureBoxY.Width, PictureBoxY.Height)
         g = Graphics.FromImage(canvas)
-        For i = 0 To 11 Step 1
+        For i = 0 To gd.Lines.Count - 1 Step 1
             Dim px1 As Integer = gd.Points(gd.Lines(i).P1).Z + OFFSET_A
             Dim py1 As Integer = gd.Points(gd.Lines(i).P1).Y + OFFSET_A
             Dim px2 As Integer = gd.Points(gd.Lines(i).P2).Z + OFFSET_A
@@ -197,7 +199,7 @@
         PictureBoxY.Image = canvas
         canvas = New Bitmap(PictureBoxZ.Width, PictureBoxZ.Height)
         g = Graphics.FromImage(canvas)
-        For i = 0 To 11 Step 1
+        For i = 0 To gd.Lines.Count - 1 Step 1
             Dim px1 As Integer = gd.Points(gd.Lines(i).P1).X + OFFSET_A
             Dim py1 As Integer = -1 * gd.Points(gd.Lines(i).P1).Z + 4 * OFFSET_A
             Dim px2 As Integer = gd.Points(gd.Lines(i).P2).X + OFFSET_A
@@ -237,12 +239,18 @@
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        DRAW_LINE = Not (DRAW_LINE)
+        Dim p1 As Integer = TextBox4.Text
+        Dim p2 As Integer = TextBox5.Text
+        'Dim p3 As Integer = TextBox6.Text
+        gd.Lines.Add(New Pair(p1, p2))
 
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        DRAW_POLYGON = Not (DRAW_POLYGON)
+        Dim p1 As Integer = TextBox7.Text
+        Dim p2 As Integer = TextBox8.Text
+        Dim p3 As Integer = TextBox9.Text
+        gd.Triangles.Add(New Triangle(p1, p2, p3))
     End Sub
 
     Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
