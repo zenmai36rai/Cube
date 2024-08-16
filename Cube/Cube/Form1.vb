@@ -231,26 +231,31 @@
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Dim x As Double = TextBox1.Text
-        Dim y As Double = TextBox2.Text
-        Dim z As Double = TextBox3.Text
-        gd.Points.Add(New D3_Point(x, y, z))
+        If TextBox1.Text.Length > 0 And TextBox2.Text.Length > 0 And TextBox3.Text.Length > 0 Then
+            Dim x As Double = TextBox1.Text
+            Dim y As Double = TextBox2.Text
+            Dim z As Double = TextBox3.Text
+            gd.Points.Add(New D3_Point(x, y, z))
+        End If
 
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        Dim p1 As Integer = TextBox4.Text
-        Dim p2 As Integer = TextBox5.Text
-        'Dim p3 As Integer = TextBox6.Text
-        gd.Lines.Add(New Pair(p1, p2))
-
+        If TextBox4.Text.Length > 0 And TextBox5.Text.Length > 0 Then
+            Dim p1 As Integer = TextBox4.Text
+            Dim p2 As Integer = TextBox5.Text
+            'Dim p3 As Integer = TextBox6.Text
+            gd.Lines.Add(New Pair(p1, p2))
+        End If
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        Dim p1 As Integer = TextBox7.Text
-        Dim p2 As Integer = TextBox8.Text
-        Dim p3 As Integer = TextBox9.Text
-        gd.Triangles.Add(New Triangle(p1, p2, p3))
+        If TextBox7.Text.Length > 0 And TextBox8.Text.Length > 0 And TextBox9.Text.Length > 0 Then
+            Dim p1 As Integer = TextBox7.Text
+            Dim p2 As Integer = TextBox8.Text
+            Dim p3 As Integer = TextBox9.Text
+            gd.Triangles.Add(New Triangle(p1, p2, p3))
+        End If
     End Sub
 
     Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
