@@ -32,20 +32,21 @@
     End Class
 
     Class GraphData
-        Public Points(8) As D3_Point
+        Public Points As List(Of D3_Point)
         Public Lines(12) As Pair
         Public Triangles(12) As Triangle
         Public ZList As List(Of Double)
         Public DepthOrder As List(Of Integer)
         Sub New()
-            Points(0) = New D3_Point(0, 0, 0)
-            Points(1) = New D3_Point(100, 0, 0)
-            Points(2) = New D3_Point(100, 0, 100)
-            Points(3) = New D3_Point(0, 0, 100)
-            Points(4) = New D3_Point(0, 100, 0)
-            Points(5) = New D3_Point(100, 100, 0)
-            Points(6) = New D3_Point(100, 100, 100)
-            Points(7) = New D3_Point(0, 100, 100)
+            Points = New List(Of D3_Point)
+            Points.Add(New D3_Point(0, 0, 0))
+            Points.Add(New D3_Point(100, 0, 0))
+            Points.Add(New D3_Point(100, 0, 100))
+            Points.Add(New D3_Point(0, 0, 100))
+            Points.Add(New D3_Point(0, 100, 0))
+            Points.Add(New D3_Point(100, 100, 0))
+            Points.Add(New D3_Point(100, 100, 100))
+            Points.Add(New D3_Point(0, 100, 100))
             Lines(0) = New Pair(0, 1)
             Lines(1) = New Pair(1, 2)
             Lines(2) = New Pair(2, 3)
