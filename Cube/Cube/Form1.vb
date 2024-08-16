@@ -1,4 +1,7 @@
 ﻿Public Class Form1
+    Private DRAW_POINT = False
+    Private DRAW_LINE = False
+    Private DRAW_POLYGON = True
     Public time As Double = 0
 
     Class D3_Point
@@ -79,7 +82,7 @@
             Static pi As Double = 3.141592 / 180
             Dim center_x As Double = 50
             Dim center_z As Double = 50
-            For i = 0 To 7 Step 1
+            For i = 0 To Points.Count - 1 Step 1
                 Dim x1 As Double = center_x - Points(i).X
                 Dim z1 As Double = center_z - Points(i).Z
                 Dim d_rad As Double = pi
@@ -134,9 +137,6 @@
         PictureBox1.BackColor = Color.White
         Dim canvas As New Bitmap(PictureBox1.Width, PictureBox1.Height)
         Dim g As Graphics = Graphics.FromImage(canvas)
-        Const DRAW_POINT = False
-        Const DRAW_LINE = False
-        Const DRAW_POLYGON = True
         If DRAW_POINT Then
             Dim PenColor() As Color = {Color.Black, Color.Red, Color.Blue, Color.Pink}
             For i = 0 To 7 Step 1
@@ -226,5 +226,19 @@
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Timer1.Start()
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        DRAW_POINT = Not (DRAW_POINT)
+
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        DRAW_LINE = Not (DRAW_LINE)
+
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        DRAW_POLYGON = Not (DRAW_POLYGON)
     End Sub
 End Class

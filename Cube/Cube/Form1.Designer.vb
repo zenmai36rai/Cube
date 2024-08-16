@@ -31,6 +31,9 @@ Partial Class Form1
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.Button3 = New System.Windows.Forms.Button()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBoxX, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBoxY, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -103,11 +106,41 @@ Partial Class Form1
         '
         Me.Timer1.Interval = 17
         '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(490, 26)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(56, 28)
+        Me.Button1.TabIndex = 7
+        Me.Button1.Text = "Point"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(552, 26)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(51, 28)
+        Me.Button2.TabIndex = 8
+        Me.Button2.Text = "Line"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(609, 26)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(56, 28)
+        Me.Button3.TabIndex = 9
+        Me.Button3.Text = "Polygon"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(737, 472)
+        Me.Controls.Add(Me.Button3)
+        Me.Controls.Add(Me.Button2)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
@@ -134,4 +167,7 @@ Partial Class Form1
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents Timer1 As Timer
+    Friend WithEvents Button1 As Button
+    Friend WithEvents Button2 As Button
+    Friend WithEvents Button3 As Button
 End Class
