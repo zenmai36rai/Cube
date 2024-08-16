@@ -139,7 +139,7 @@
         Dim g As Graphics = Graphics.FromImage(canvas)
         If DRAW_POINT Then
             Dim PenColor() As Color = {Color.Black, Color.Red, Color.Blue, Color.Pink}
-            For i = 0 To 7 Step 1
+            For i = 0 To gd.Points.Count - 1 Step 1
                 Dim px1 As Integer = gd.Points(i).X + gd.Points(i).Z / 2 + OFFSET_A
                 Dim py1 As Integer = gd.Points(i).Y - gd.Points(i).Z / 2 + OFFSET_C
                 Dim r As Rectangle = New Rectangle(px1 - 1, py1 - 1, 2, 2)
@@ -229,7 +229,10 @@
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        DRAW_POINT = Not (DRAW_POINT)
+        Dim x As Double = TextBox1.Text
+        Dim y As Double = TextBox2.Text
+        Dim z As Double = TextBox3.Text
+        gd.Points.Add(New D3_Point(x, y, z))
 
     End Sub
 
@@ -240,5 +243,19 @@
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         DRAW_POLYGON = Not (DRAW_POLYGON)
+    End Sub
+
+    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
+        DRAW_POINT = CheckBox1.Checked
+    End Sub
+
+    Private Sub CheckBox2_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox2.CheckedChanged
+        DRAW_LINE = CheckBox2.Checked
+
+    End Sub
+
+    Private Sub CheckBox3_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox3.CheckedChanged
+        DRAW_POLYGON = CheckBox3.Checked
+
     End Sub
 End Class
