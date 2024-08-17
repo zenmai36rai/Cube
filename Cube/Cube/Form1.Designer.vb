@@ -46,6 +46,8 @@ Partial Class Form1
         Me.TextBox9 = New System.Windows.Forms.TextBox()
         Me.TextBox8 = New System.Windows.Forms.TextBox()
         Me.TextBox7 = New System.Windows.Forms.TextBox()
+        Me.Button4 = New System.Windows.Forms.Button()
+        Me.Button5 = New System.Windows.Forms.Button()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBoxX, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBoxY, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -241,11 +243,31 @@ Partial Class Form1
         Me.TextBox7.Size = New System.Drawing.Size(52, 19)
         Me.TextBox7.TabIndex = 19
         '
+        'Button4
+        '
+        Me.Button4.Location = New System.Drawing.Point(478, 161)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(51, 19)
+        Me.Button4.TabIndex = 23
+        Me.Button4.Text = "Load"
+        Me.Button4.UseVisualStyleBackColor = True
+        '
+        'Button5
+        '
+        Me.Button5.Location = New System.Drawing.Point(536, 161)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(52, 19)
+        Me.Button5.TabIndex = 22
+        Me.Button5.Text = "Save"
+        Me.Button5.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(737, 472)
+        Me.Controls.Add(Me.Button4)
+        Me.Controls.Add(Me.Button5)
         Me.Controls.Add(Me.TextBox9)
         Me.Controls.Add(Me.TextBox8)
         Me.Controls.Add(Me.TextBox7)
@@ -302,4 +324,6 @@ Partial Class Form1
     Friend WithEvents TextBox9 As TextBox
     Friend WithEvents TextBox8 As TextBox
     Friend WithEvents TextBox7 As TextBox
+    Friend WithEvents Button4 As Button
+    Friend WithEvents Button5 As Button
 End Class

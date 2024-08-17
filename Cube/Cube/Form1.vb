@@ -271,6 +271,31 @@
         DRAW_POLYGON = CheckBox3.Checked
 
     End Sub
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+        'Load
+    End Sub
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+        'Save
+        Dim encoding = System.Text.Encoding.UTF8
+        Dim filePath As String = "model.txt"
+        Dim id As Integer = 1
+        Using strm As IO.StreamWriter = New IO.StreamWriter(filePath, False, encoding)
+            For Each a In gd.Points
+                Dim Text As String = "P," + a.X.ToString + "," + a.Y.ToString + "," + a.Z.ToString
+                strm.WriteLine(Text)
+            Next
+            For Each a In gd.Lines
+                Dim Text As String = "L," + a.P1.ToString + "," + a.P2.ToString
+                strm.WriteLine(Text)
+            Next
+            For Each a In gd.Triangles
+                Dim Text As String = "T," + a.P1.ToString + "," + a.P2.ToString + "," + a.P3.ToString
+                strm.WriteLine(Text)
+            Next
+        End Using
+
+    End Sub
+
 End Class
 
 ' 2024/08/16 Kyosuke Miyazawa Edit This Code!
