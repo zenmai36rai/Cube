@@ -234,7 +234,7 @@
             g.DrawLine(Pens.Red, px, 0, px, canvas.Height)
         End If
         If GUIDE_FLAG And TextBox3.Text <> "" Then
-            Dim pz = -1 * _PY + 4 * OFFSET_A
+            Dim pz = -1 * _PZ + 4 * OFFSET_A
             g.DrawLine(Pens.Red, 0, pz, canvas.Height, pz)
         End If
         PictureBoxZ.Image = canvas
