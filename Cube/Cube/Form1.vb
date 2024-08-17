@@ -2,6 +2,7 @@
     Private DRAW_POINT = False
     Private DRAW_LINE = False
     Private DRAW_POLYGON = True
+    Private ROTATE_FLAG = True
     Public time As Double = 0
 
     Class D3_Point
@@ -227,7 +228,9 @@
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         Draw()
-        gd.Rotate()
+        If ROTATE_FLAG Then
+            gd.Rotate()
+        End If
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -327,6 +330,10 @@
 
     End Sub
 
+    Private Sub CheckBox4_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox4.CheckedChanged
+        ROTATE_FLAG = CheckBox4.Checked
+
+    End Sub
 End Class
 
 ' Since 2024 This Code Written By Kyosuke Miyazawa
