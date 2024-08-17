@@ -50,6 +50,7 @@ Partial Class Form1
         Me.Button5 = New System.Windows.Forms.Button()
         Me.CheckBox4 = New System.Windows.Forms.CheckBox()
         Me.ColorDialog1 = New System.Windows.Forms.ColorDialog()
+        Me.CheckBox5 = New System.Windows.Forms.CheckBox()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBoxX, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBoxY, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -279,11 +280,24 @@ Partial Class Form1
         '
         Me.ColorDialog1.Color = System.Drawing.Color.Gray
         '
+        'CheckBox5
+        '
+        Me.CheckBox5.AutoSize = True
+        Me.CheckBox5.Checked = True
+        Me.CheckBox5.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.CheckBox5.Location = New System.Drawing.Point(480, 195)
+        Me.CheckBox5.Name = "CheckBox5"
+        Me.CheckBox5.Size = New System.Drawing.Size(53, 16)
+        Me.CheckBox5.TabIndex = 25
+        Me.CheckBox5.Text = "Guide"
+        Me.CheckBox5.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(737, 472)
+        Me.Controls.Add(Me.CheckBox5)
         Me.Controls.Add(Me.CheckBox4)
         Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.Button5)
@@ -347,4 +361,5 @@ Partial Class Form1
     Friend WithEvents Button5 As Button
     Friend WithEvents CheckBox4 As CheckBox
     Friend WithEvents ColorDialog1 As ColorDialog
+    Friend WithEvents CheckBox5 As CheckBox
 End Class

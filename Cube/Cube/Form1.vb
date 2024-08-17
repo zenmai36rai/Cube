@@ -3,7 +3,11 @@
     Private DRAW_LINE = False
     Private DRAW_POLYGON = True
     Private ROTATE_FLAG = True
+    Private GUIDE_FLAG = True
     Public time As Double = 0
+    Public _PX As Integer = 0
+    Public _PY As Integer = 0
+    Public _PZ As Integer = 0
 
     Class D3_Point
         Public X As Double
@@ -189,6 +193,14 @@
             Dim py2 As Integer = gd.Points(gd.Lines(i).P2).Y + OFFSET_A
             g.DrawLine(Pens.Black, px1, py1, px2, py2)
         Next
+        If GUIDE_FLAG And TextBox1.Text <> "" Then
+            Dim px = _PX + OFFSET_A
+            g.DrawLine(Pens.Red, px, 0, px, canvas.Height)
+        End If
+        If GUIDE_FLAG And TextBox2.Text <> "" Then
+            Dim py = _PY + OFFSET_A
+            g.DrawLine(Pens.Red, 0, py, canvas.Height, py)
+        End If
         PictureBoxX.Image = canvas
         canvas = New Bitmap(PictureBoxY.Width, PictureBoxY.Height)
         g = Graphics.FromImage(canvas)
@@ -199,6 +211,14 @@
             Dim py2 As Integer = gd.Points(gd.Lines(i).P2).Y + OFFSET_A
             g.DrawLine(Pens.Black, px1, py1, px2, py2)
         Next
+        If GUIDE_FLAG And TextBox3.Text <> "" Then
+            Dim pz = _PZ + OFFSET_A
+            g.DrawLine(Pens.Red, pz, 0, pz, canvas.Height)
+        End If
+        If GUIDE_FLAG And TextBox2.Text <> "" Then
+            Dim py = _PY + OFFSET_A
+            g.DrawLine(Pens.Red, 0, py, canvas.Height, py)
+        End If
         PictureBoxY.Image = canvas
         canvas = New Bitmap(PictureBoxZ.Width, PictureBoxZ.Height)
         g = Graphics.FromImage(canvas)
@@ -209,6 +229,14 @@
             Dim py2 As Integer = -1 * gd.Points(gd.Lines(i).P2).Z + 4 * OFFSET_A
             g.DrawLine(Pens.Black, px1, py1, px2, py2)
         Next
+        If GUIDE_FLAG And TextBox1.Text <> "" Then
+            Dim px = _PX + OFFSET_A
+            g.DrawLine(Pens.Red, px, 0, px, canvas.Height)
+        End If
+        If GUIDE_FLAG And TextBox3.Text <> "" Then
+            Dim pz = -1 * _PY + 4 * OFFSET_A
+            g.DrawLine(Pens.Red, 0, pz, canvas.Height, pz)
+        End If
         PictureBoxZ.Image = canvas
     End Sub
 
@@ -337,6 +365,30 @@
 
     Private Sub ColorDialog1_HelpRequest(sender As Object, e As EventArgs) Handles ColorDialog1.HelpRequest
 
+    End Sub
+
+    Private Sub CheckBox5_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox5.CheckedChanged
+        GUIDE_FLAG = CheckBox5.Checked
+
+    End Sub
+
+    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
+        If TextBox1.Text <> "" Then
+            _PX = TextBox1.Text
+
+        End If
+    End Sub
+
+    Private Sub TextBox2_TextChanged(sender As Object, e As EventArgs) Handles TextBox2.TextChanged
+        If TextBox2.Text <> "" Then
+            _PY = TextBox2.Text
+        End If
+    End Sub
+
+    Private Sub TextBox3_TextChanged(sender As Object, e As EventArgs) Handles TextBox3.TextChanged
+        If TextBox3.Text <> "" Then
+            _PZ = TextBox3.Text
+        End If
     End Sub
 End Class
 
