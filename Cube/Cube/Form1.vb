@@ -28,10 +28,12 @@
         Public P1 As Integer
         Public P2 As Integer
         Public P3 As Integer
-        Sub New(ByVal _p1, ByVal _p2, ByVal _p3)
+        Public BR As Color
+        Sub New(ByVal _p1, ByVal _p2, ByVal _p3, ByVal _br)
             P1 = _p1
             P2 = _p2
             P3 = _p3
+            BR = Color.FromName(_br)
         End Sub
     End Class
 
@@ -65,18 +67,18 @@
             Lines.Add(New Pair(6, 7))
             Lines.Add(New Pair(7, 4))
             Triangles = New List(Of Triangle)
-            Triangles.Add(New Triangle(0, 1, 2))
-            Triangles.Add(New Triangle(2, 3, 0))
-            Triangles.Add(New Triangle(0, 1, 4))
-            Triangles.Add(New Triangle(1, 4, 5))
-            Triangles.Add(New Triangle(2, 3, 6))
-            Triangles.Add(New Triangle(3, 6, 7))
-            Triangles.Add(New Triangle(1, 2, 5))
-            Triangles.Add(New Triangle(5, 6, 2))
-            Triangles.Add(New Triangle(3, 0, 4))
-            Triangles.Add(New Triangle(4, 7, 3))
-            Triangles.Add(New Triangle(4, 5, 6))
-            Triangles.Add(New Triangle(6, 7, 4))
+            Triangles.Add(New Triangle(0, 1, 2, "LightSkyBlue"))
+            Triangles.Add(New Triangle(2, 3, 0, "LightSkyBlue"))
+            Triangles.Add(New Triangle(0, 1, 4, "Yellow"))
+            Triangles.Add(New Triangle(1, 4, 5, "Yellow"))
+            Triangles.Add(New Triangle(2, 3, 6, "Yellow"))
+            Triangles.Add(New Triangle(3, 6, 7, "Yellow"))
+            Triangles.Add(New Triangle(1, 2, 5, "Gray"))
+            Triangles.Add(New Triangle(5, 6, 2, "Gray"))
+            Triangles.Add(New Triangle(3, 0, 4, "Gray"))
+            Triangles.Add(New Triangle(4, 7, 3, "Gray"))
+            Triangles.Add(New Triangle(4, 5, 6, "Gray"))
+            Triangles.Add(New Triangle(6, 7, 4, "Gray"))
             ZList = New List(Of Double)
             DepthOrder = New List(Of Integer)
         End Sub
@@ -172,12 +174,8 @@
                 p(1).Y = gd.Points(gd.Triangles(i).P2).Y - gd.Points(gd.Triangles(i).P2).Z / 2 + OFFSET_C
                 p(2).X = gd.Points(gd.Triangles(i).P3).X + gd.Points(gd.Triangles(i).P3).Z / 2 + OFFSET_A
                 p(2).Y = gd.Points(gd.Triangles(i).P3).Y - gd.Points(gd.Triangles(i).P3).Z / 2 + OFFSET_C
-                Dim c = i / 2
-                Dim panel_color = Brushes.Gray
-                If c < colors.Length Then
-                    panel_color = colors(i / 2)
-                End If
-                g.FillPolygon(panel_color, p)
+                Dim b As Brush = New SolidBrush(gd.Triangles(i).BR)
+                g.FillPolygon(b, p)
             Next
         End If
         PictureBox1.Image = canvas
@@ -261,7 +259,7 @@
             Dim p1 As Integer = TextBox7.Text
             Dim p2 As Integer = TextBox8.Text
             Dim p3 As Integer = TextBox9.Text
-            gd.Triangles.Add(New Triangle(p1, p2, p3))
+            gd.Triangles.Add(New Triangle(p1, p2, p3, Brushes.Gray))
         End If
     End Sub
 
@@ -300,8 +298,8 @@
                 If arr.Length > 2 And arr(0) = "L" Then
                     gd.Lines.Add(New Pair(arr(1), arr(2)))
                 End If
-                If arr.Length > 3 And arr(0) = "T" Then
-                    gd.Triangles.Add(New Triangle(arr(1), arr(2), arr(3)))
+                If arr.Length > 4 And arr(0) = "T" Then
+                    gd.Triangles.Add(New Triangle(arr(1), arr(2), arr(3), arr(4)))
                 End If
                 ' ファイルを1行読み込む
                 line = strm.ReadLine()
@@ -323,7 +321,7 @@
                 strm.WriteLine(Text)
             Next
             For Each a In gd.Triangles
-                Dim Text As String = "T," + a.P1.ToString + "," + a.P2.ToString + "," + a.P3.ToString
+                Dim Text As String = "T," + a.P1.ToString + "," + a.P2.ToString + "," + a.P3.ToString + "," + a.BR.ToKnownColor.ToString
                 strm.WriteLine(Text)
             Next
         End Using
