@@ -171,7 +171,11 @@
                 p(1).Y = gd.Points(gd.Triangles(i).P2).Y - gd.Points(gd.Triangles(i).P2).Z / 2 + OFFSET_C
                 p(2).X = gd.Points(gd.Triangles(i).P3).X + gd.Points(gd.Triangles(i).P3).Z / 2 + OFFSET_A
                 p(2).Y = gd.Points(gd.Triangles(i).P3).Y - gd.Points(gd.Triangles(i).P3).Z / 2 + OFFSET_C
-                Dim panel_color = colors(i / 2)
+                Dim c = i / 2
+                Dim panel_color = Brushes.Gray
+                If c < colors.Length Then
+                    panel_color = colors(i / 2)
+                End If
                 g.FillPolygon(panel_color, p)
             Next
         End If
@@ -325,4 +329,4 @@
 
 End Class
 
-' 2024/08/16 Kyosuke Miyazawa Edit This Code!
+' Since 2024 This Code Written By Kyosuke Miyazawa
