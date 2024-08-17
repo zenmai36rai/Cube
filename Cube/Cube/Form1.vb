@@ -273,6 +273,33 @@
     End Sub
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
         'Load
+        Dim encoding = System.Text.Encoding.UTF8
+        Dim filePath As String = "model.txt"
+        Dim line As String = String.Empty
+        Dim arr As Array
+        gd.Points.Clear()
+        gd.Lines.Clear()
+        gd.Triangles.Clear()
+
+        ' StreamReaderのインスタンスを生成する
+        Using strm As IO.StreamReader = New IO.StreamReader(filePath, encoding)
+            line = strm.ReadLine()
+            While line IsNot Nothing
+                ' 読み込んだ1行を配列に格納する
+                arr = line.Split(",")
+                If arr.Length > 3 And arr(0) = "P" Then
+                    gd.Points.Add(New D3_Point(arr(1), arr(2), arr(3)))
+                End If
+                If arr.Length > 2 And arr(0) = "L" Then
+                    gd.Lines.Add(New Pair(arr(1), arr(2)))
+                End If
+                If arr.Length > 3 And arr(0) = "T" Then
+                    gd.Triangles.Add(New Triangle(arr(1), arr(2), arr(3)))
+                End If
+                ' ファイルを1行読み込む
+                line = strm.ReadLine()
+            End While
+        End Using
     End Sub
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
         'Save
