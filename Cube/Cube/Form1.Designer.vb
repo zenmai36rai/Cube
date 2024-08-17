@@ -49,6 +49,7 @@ Partial Class Form1
         Me.Button4 = New System.Windows.Forms.Button()
         Me.Button5 = New System.Windows.Forms.Button()
         Me.CheckBox4 = New System.Windows.Forms.CheckBox()
+        Me.ColorDialog1 = New System.Windows.Forms.ColorDialog()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBoxX, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBoxY, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -274,6 +275,10 @@ Partial Class Form1
         Me.CheckBox4.Text = "Rotate"
         Me.CheckBox4.UseVisualStyleBackColor = True
         '
+        'ColorDialog1
+        '
+        Me.ColorDialog1.Color = System.Drawing.Color.Gray
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
@@ -341,4 +346,5 @@ Partial Class Form1
     Friend WithEvents Button4 As Button
     Friend WithEvents Button5 As Button
     Friend WithEvents CheckBox4 As CheckBox
+    Friend WithEvents ColorDialog1 As ColorDialog
 End Class

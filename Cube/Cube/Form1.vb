@@ -255,11 +255,13 @@
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        ColorDialog1.ShowDialog()
+        Dim c As Color = ColorDialog1.Color
         If TextBox7.Text.Length > 0 And TextBox8.Text.Length > 0 And TextBox9.Text.Length > 0 Then
             Dim p1 As Integer = TextBox7.Text
             Dim p2 As Integer = TextBox8.Text
             Dim p3 As Integer = TextBox9.Text
-            gd.Triangles.Add(New Triangle(p1, p2, p3, Brushes.Gray))
+            gd.Triangles.Add(New Triangle(p1, p2, p3, c.ToKnownColor.ToString))
         End If
     End Sub
 
@@ -330,6 +332,10 @@
 
     Private Sub CheckBox4_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox4.CheckedChanged
         ROTATE_FLAG = CheckBox4.Checked
+
+    End Sub
+
+    Private Sub ColorDialog1_HelpRequest(sender As Object, e As EventArgs) Handles ColorDialog1.HelpRequest
 
     End Sub
 End Class
